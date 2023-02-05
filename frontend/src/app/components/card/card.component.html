@@ -1,0 +1,41 @@
+<div class="mx-auto h-full flex w-full items-center justify-center">
+  <div
+    [ngClass]="{
+      'from-red-400 via-red-300 to-red-400': blog.ratio < 0,
+      'from-gray-400 via-gray-300 to-gray-400': blog.ratio == 0,
+      'from-green-400 via-green-300 to-green-400': blog.ratio > 0
+    }"
+    class="h-full w-full rounded-lg bg-gradient-to-r p-[2px]"
+  >
+    <div
+      class="relative h-full px-7 py-6 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top flex-col justify-start gap-4"
+    >
+      <div
+        class="flex md:flex-row flex-col justify-start md:justify-between items-start md:items-center w-fit md:w-full gap-2"
+      >
+        <p class="text-slate-800 font-bold text-2xl w-fit md:w-full">
+          {{ blog?.title }}
+        </p>
+        <app-voting-buttons
+          [upVotes]="blog?.upvotes"
+          [downVotes]="blog?.downvotes"
+        ></app-voting-buttons>
+      </div>
+      <p class="text-slate-400">{{ blog?.author }}</p>
+      <p class="text-slate-800 line-clamp-2 pb-[3px]">
+        {{ blog?.content }}
+      </p>
+      <div class="relative group w-fit">
+        <a
+          [routerLink]="['/blog', blog.id]"
+          class="text-gray-400 group-hover:text-slate-500 transition duration-400 w-fit mt-auto"
+          >Continue Reading →</a
+        >
+        <span
+          class="absolute -bottom-1 left-0 w-0 h-[3px] bg-slate-500 transition-all duration-800 group-hover:w-full"
+        >
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

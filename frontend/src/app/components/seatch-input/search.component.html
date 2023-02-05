@@ -1,0 +1,14 @@
+<div class="relative float-label-input h-fit w-full">
+  <input
+    type="text"
+    [formControl]="searchedValue"
+    (input)="handleSearch()"
+    placeholder=" "
+    class="bg-white w-full h-min border focus:outline-none focus:shadow-outline border-gray-300 rounded-lg py-3 px-3 appearance-none leading-normal focus:border-gray-400"
+  />
+  <label
+    for="search"
+    class="absolute top-3 left-0 text-gray-400 pointer-events-none transition duration-200 ease-in-out bg-transparent rounded-full px-2 text-grey-darker"
+    >Search</label
+  >
+</div>

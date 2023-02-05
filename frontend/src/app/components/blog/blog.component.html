@@ -1,0 +1,42 @@
+<section class="h-full">
+  <div
+    class="container my-8 mx-auto flex flex-col border p-4 rounded-lg lg:w-1/2 bg-gray-100"
+  >
+    <div
+      [ngClass]="{
+        'from-red-400 via-red-200 to-red-400': blog.ratio < 0,
+        'from-gray-400 via-gray-200 to-gray-400': blog.ratio == 0,
+        'from-green-400 via-green-200 to-green-400': blog.ratio > 0
+      }"
+      class="h-full w-full rounded-lg bg-gradient-to-r p-[2px]"
+    >
+      <div class="mx-auto text-center py-20 rounded-lg" *ngIf="isLoading">
+        Please wait...
+      </div>
+
+      <div
+        *ngIf="!isLoading"
+        class="relative h-full px-7 py-6 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top flex-col justify-center gap-4"
+      >
+        <div
+          class="flex md:flex-row flex-col justify-start md:justify-between items-center w-fit md:w-full gap-2"
+        >
+          <div
+            class="flex flex-row gap-4 justify-start items-center font-bold text-2xl"
+          >
+            <button class="text-4xl -mt-1" routerLink="/">←</button>
+            <p class="text-slate-800 font-bold text-2xl">{{ blog?.title }}</p>
+          </div>
+          <app-voting-buttons
+            [upVotes]="blog?.upvotes"
+            [downVotes]="blog?.downvotes"
+          ></app-voting-buttons>
+        </div>
+        <p class="text-slate-400">{{ blog?.author }}</p>
+        <p class="text-slate-800">
+          {{ blog?.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

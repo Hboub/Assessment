@@ -1,0 +1,55 @@
+<section class="h-full flex items-center">
+  <div
+    class="container m-4 lg:my-8 mx-auto h-full border p-4 rounded-lg lg:w-1/2 bg-gray-50"
+  >
+    <div
+      class="flex flex-row gap-4 justify-start items-center font-bold text-2xl"
+    >
+      <button class="text-4xl -mt-1" routerLink="/">←</button>
+      <p>Add A Blog</p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="relative float-label-input h-fit w-full">
+        <input
+          type="text"
+          formControlName="title"
+          placeholder=" "
+          required
+          class="input"
+        />
+
+        <label for="title" class="label">title</label>
+      </div>
+      <div class="relative float-label-input h-fit w-full">
+        <input
+          type="text"
+          formControlName="author"
+          placeholder=" "
+          required
+          class="input"
+        />
+
+        <label for="author" class="label">author</label>
+      </div>
+      <div class="relative float-label-input h-fit w-full">
+        <textarea
+          type="text"
+          formControlName="content"
+          placeholder=" "
+          required
+          class="input"
+        ></textarea>
+        <label for="content" class="label">content</label>
+      </div>
+      <div class="w-full flex justify-end">
+        <button
+          class="border-[1px] px-4 py-[10px] rounded-lg font-semibold disabled:text-gray-500 disabled:border-gray-200 disabled:bg-white hover:text-slate-400 hover:bg-white text-white bg-slate-400 border-slate-400 transition duration-800 ease-in-out"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
